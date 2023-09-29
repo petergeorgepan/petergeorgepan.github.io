@@ -17,11 +17,14 @@
         
     }
    .ver{ 
-     writing-mode:vertical-rl
+     writing-mode:vertical-rl;
+     display:inline-block;
+     white-space:nowrap;
    }
    .scro{
         overflow:scroll;
         overflow-x: hidden;
+        word-wrap:breakword;
    }
     .point{
         overflow: hidden;
@@ -42,7 +45,7 @@
     </div>
        <div class="scro">
         some text with a span element
-       <p>with a   <p class="ver">vertical-rl </p> writing-mode.</p>
+       <nobr>with a   <banner class="ver">vertical-rl </banner> writing-mode</nobr>
     </div> 
   </body>
 </html>
