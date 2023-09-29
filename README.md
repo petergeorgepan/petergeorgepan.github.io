@@ -9,7 +9,7 @@
         width: 300px;
         height: 200px;
         margin:  20px;
-        font-size: 30px;
+        font-size: 30px ;
         
     }
     .vis{
