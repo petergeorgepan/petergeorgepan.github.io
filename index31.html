@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Value Checker</title>
+</head>
+<body>
+    <p>Please input a number between 150 and 300:</p>
+    <input type="text" id="valueInput" placeholder="Enter a value">
+    <button onclick="checkValue()">Check Value</button>
+    <p id="resultMessage"></p>
+
+    <script>
+        function checkValue() {
+            var inputValue = document.getElementById("valueInput").value;
+            var resultMessage = document.getElementById("resultMessage");
+
+            if (isNaN(inputValue)) {
+                resultMessage.textContent = "Please enter a valid number";
+            } else {
+                var numericValue = parseFloat(inputValue);
+                if (numericValue < 150) {
+                    resultMessage.textContent = "Value too small";
+                } else if (numericValue > 300) {
+                    resultMessage.textContent = "Value too high";
+                } else {
+                    resultMessage.textContent = "Input OK";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
