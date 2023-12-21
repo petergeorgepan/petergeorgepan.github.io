@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>記帳網頁</title>
+  <!-- 引入 Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #chartContainer {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+
+  <form id="expenseForm">
+    <label for="item1">Toothpaste：</label>
+    <input type="number" id="item1" name="item1" required>
+
+    <label for="item2">FaceCream：</label>
+    <input type="number" id="item2" name="item2" required>
+
+    <label for="item3">FaseWash：</label>
+    <input type="number" id="item3" name="item3" required>
+
+    <label for="item4">Bathing soap：</label>
+    <input type="number" id="item4" name="item4" required>
+
+    <label for="item5">Shampoo：</label>
+    <input type="number" id="item5" name="item5" required>
+
+    <label for="item6">Moisturizer：</label>
+    <input type="number" id="item6" name="item6" required>
+
+    <button type="button" onclick="calculateExpense()">確定</button>
+  </form>
+
+  <div id="chartContainer">
+    <canvas id="expenseChart"></canvas>
+  </div>
+
+  <script>
+    function calculateExpense() {
+      // 取得各項目金額
+      const item1 = parseFloat(document.getElementById('item1').value);
+      const item2 = parseFloat(document.getElementById('item2').value);
+      const item3 = parseFloat(document.getElementById('item3').value);
+      const item4 = parseFloat(document.getElementById('item4').value);
+      const item5 = parseFloat(document.getElementById('item5').value);
+      const item6 = parseFloat(document.getElementById('item6').value);
+
+      // 計算總花費
+      const totalExpense = item1 + item2 + item3 + item4 + item5 + item6;
+
+      // 計算各項目比例
+      const item1Percentage = (item1 / totalExpense) * 100;
+      const item2Percentage = (item2 / totalExpense) * 100;
+      const item3Percentage = (item3 / totalExpense) * 100;
+      const item4Percentage = (item4 / totalExpense) * 100;
+      const item5Percentage = (item5 / totalExpense) * 100;
+      const item6Percentage = (item6 / totalExpense) * 100;
+
+      // 顯示圓餅圖
+      displayPieChart([item1Percentage, item2Percentage, item3Percentage, item4Percentage, item5Percentage, item6Percentage]);
+    }
+
+    function displayPieChart(data) {
+      const ctx = document.getElementById('expenseChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Toothpaste', 'FaceCream', 'FaseWash', 'Bathing soap', 'Shampoo', 'Moisturizer'],
+          datasets: [{
+            data: data,
+            backgroundColor: [
+              'red', 'blue', 'green', 'orange', 'purple', 'pink'
+            ]
+          }]
+        }
+      });
+    }
+  </script>
+</body>
+</html>
